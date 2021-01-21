@@ -12,7 +12,7 @@ print(csvpath)
 
 # Open and read csv
 with open(csvpath) as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=",")
+    budget_csv = csv.reader(csvfile, delimiter=",")
 
     # Read the header row first
     csv_header = next(csvfile)
@@ -20,26 +20,23 @@ with open(csvpath) as csvfile:
 
     # Identify variables
     total_months = 0
-    revenue = []
-    months = []
     total_revenue = 0
-    net_total = 0
     current_row = 0
     prior_row = 0
     total_change = 0
     first_loop = True
     monthly_change = 0
+    greatest_increase = 0
+    greatest_decrease = 0
+    month = 0
+
     
     # Begin for loop
-    for row in csvreader:
+    for row in budget_csv:
 
+        # Calculate total months
         total_months = total_months + 1
-
-
     
-        # Put revenue in list
-        # revenue.append(row[1])
-        # print(revenue)
 
         # Find the net total amount of Profit/Losses
         total_revenue = total_revenue + int(row[1])
@@ -49,17 +46,24 @@ with open(csvpath) as csvfile:
         current_row = int(row[1])
         # print(current_row)
 
+        # To compensate for the blank first row set to False
         if first_loop == False:
             monthly_change = current_row - prior_row
             # Print monthly change
             # print(f"Monthly Change: {monthly_change}")
         
-                
+        # Starting point after moving past the blank row       
         prior_row = current_row
+
+        # Get help with Greatest and Least Increase
+        # greatest_increase = max(monthly_change)
+        # print(greatest_increase)
+
 
         # Find sum of total changes
         total_change = total_change + monthly_change
         # print(total_change)
+
 
         first_loop = False
     
@@ -67,16 +71,16 @@ with open(csvpath) as csvfile:
     average_monthly_change = round(total_change/(total_months - 1), 2)
     # print(average_monthly_change)
 
+    
+    
 
 
 
-
-    # Find total number of months included in dataset
-    # total_months = len(list(csvreader)) + 1
     print(f"Total Months: {total_months}")
     print(f"Total: ${total_revenue}")
     print(f"Average Change: ${average_monthly_change}")
-
+    print(f"Greatest Increase in Profits: {month}, {greatest_increase}")
+    print(f"Greatest Decrease in Profits: {month}, {greatest_decrease}")
 
 
 
