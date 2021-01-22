@@ -1,5 +1,5 @@
-# Huge thanks to Sharon Templin for helping me with the code for the monthly change calculation and how to move past the first row
-# Huge thanks to TA Benji for helping me with calculating the greatest increase and decrease of the monthly change.
+ # Huge thanks to Sharon Templin for helping me with the code for the monthly change calculation and how to move past the first row
+
 
 # Import os module
 import os
@@ -10,6 +10,7 @@ import csv
 # Find file
 csvpath = os.path.join('Resources', 'budget_data.csv')
 print(csvpath)
+
 
 # Open and read csv
 with open(csvpath) as csvfile:
@@ -30,8 +31,7 @@ with open(csvpath) as csvfile:
     greatest_increase = 0
     greatest_decrease = 0
     month = 0
-    greatest_increase_month = ""
-    greatest_decrease_month = ""
+    change_list = []
 
     
     # Begin for loop
@@ -45,6 +45,7 @@ with open(csvpath) as csvfile:
         total_revenue = total_revenue + int(row[1])
 
 
+
         # Calculate the changes in "Profit/Losses" over the entire period
         current_row = int(row[1])
         # print(current_row)
@@ -52,25 +53,21 @@ with open(csvpath) as csvfile:
         # To compensate for the blank first row set to False
         if first_loop == False:
             monthly_change = current_row - prior_row
-          
-            # Calculate greatest monthly increase along with the month it occurred in
-            if greatest_increase < monthly_change:
-                greatest_increase = monthly_change
-                greatest_increase_month = row[0]
-
-            # Calculate greatest monthly decrease along with the month it occurred in
-            if greatest_decrease > monthly_change:
-                greatest_decrease = monthly_change
-                greatest_decrease_month = row[0]
-
-
+            # Print monthly change
+            # print(f"Monthly Change: {monthly_change}")
+        
         # Starting point after moving past the blank row       
         prior_row = current_row
+
+        # Get help with Greatest and Least Increase
+        # greatest_increase = max(monthly_change)
+        # print(greatest_increase)
 
 
         # Find sum of total changes
         total_change = total_change + monthly_change
         # print(total_change)
+
 
         first_loop = False
     
@@ -78,13 +75,19 @@ with open(csvpath) as csvfile:
     average_monthly_change = round(total_change/(total_months - 1), 2)
     # print(average_monthly_change)
 
+    change_list.insert(0, int(0))
+
+    greatest_increase = max(change_list)
+    greatest_decrease = min(change_list)
+    
+
 
 
     print(f"Total Months: {total_months}")
     print(f"Total: ${total_revenue}")
     print(f"Average Change: ${average_monthly_change}")
-    print(f"Greatest Increase in Profits: {greatest_increase_month}, (${greatest_increase})")
-    print(f"Greatest Decrease in Profits: {greatest_decrease_month}, (${greatest_decrease})")
+    print(f"Greatest Increase in Profits: {month}, {greatest_increase}")
+    print(f"Greatest Decrease in Profits: {month}, {greatest_decrease}")
 
 
 
