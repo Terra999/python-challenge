@@ -36,9 +36,10 @@ unique_candidates = []
 candidate_votes = []
 vote_count = 0
 
-# Define how to find and pull out the unique names
+# Set up a function to find unique
 def unique(candidate_name):
     
+    # Read through each row
     for name in candidate_name:
 
          if name not in unique_candidates:
@@ -48,11 +49,13 @@ def unique(candidate_name):
 
 # Return unique candidate names
 unique(candidate_name)
-print(unique_candidates)
+ # print(unique_candidates)
 
+# Set parameter for vote count
 def vote_count(unique_candidates):
+    # Set counter to 0
     vote_count = 0
-
+    # 
     for name in unique_candidates:
         for vote in candidate_name:
             if name == vote:
@@ -63,6 +66,15 @@ def vote_count(unique_candidates):
 
 vote_count(unique_candidates)
 print(candidate_votes)
+
+# def print_percentages(candidate_votes):
+
+#     candidate_votes = 0
+#     unique_candidates = 0 
+
+#     win_percent = round(candidate_votes / unique_candidates * 100, 2)
+
+#     print(win_percent)
 
 
 
