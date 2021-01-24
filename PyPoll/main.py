@@ -104,15 +104,15 @@ print("---------------------------------")
 output_path = os.path.join("Analysis", "PyPoll.txt")
 
 # Open the file using "write" mode. Specify the variable to hold the content.
-with open(output_path, "w") as text_file:
+with open(output_path, "w") as text:
 
-    print(" ")
-    print("Election Results")       
-    print("---------------------------------")
-    print(f"Total Votes: {total_votes}")
-    print("---------------------------------")
+    print(" ", file = text)
+    print("Election Results", file = text)       
+    print("---------------------------------", file = text)
+    print(f"Total Votes: {total_votes}", file = text)
+    print("---------------------------------", file = text)
     for lst in candidate_tuple:
-        print(f"{lst[0]}: {lst[1]}00% ({lst[2]})")
-    print("---------------------------------")
-    print(f"Winner: {winner}")
-    print("---------------------------------")
+        print(f"{lst[0]}: {lst[1]}00% ({lst[2]})", file = text)
+    print("---------------------------------", file = text)
+    print(f"Winner: {winner}", file = text)
+    print("---------------------------------", file = text)

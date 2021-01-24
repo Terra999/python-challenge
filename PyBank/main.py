@@ -92,13 +92,13 @@ print(f"Greatest Decrease in Profits: {greatest_decrease_month}, (${greatest_dec
 output_path = os.path.join("Analysis", "PyBank.txt")
 
 # # Open the file using "write" mode. Specify the variable to hold the content.
-with open(output_path, "w") as text_file:
+with open(output_path, "w") as text:
 
-    print(" ")
-    print("Financial Analysis")       
-    print("---------------------------------")
-    print(f"Total Months: {total_months}")
-    print(f"Total: ${total_revenue}")
-    print(f"Average Change: ${average_monthly_change}")
-    print(f"Greatest Increase in Profits: {greatest_increase_month}, (${greatest_increase})")
-    print(f"Greatest Decrease in Profits: {greatest_decrease_month}, (${greatest_decrease})")
+    print(" ", file = text)
+    print("Financial Analysis", file = text)       
+    print("---------------------------------", file = text)
+    print(f"Total Months: {total_months}", file = text)
+    print(f"Total: ${total_revenue}", file = text)
+    print(f"Average Change: ${average_monthly_change}", file = text)
+    print(f"Greatest Increase in Profits: {greatest_increase_month}, (${greatest_increase})", file = text)
+    print(f"Greatest Decrease in Profits: {greatest_decrease_month}, (${greatest_decrease})", file = text)
