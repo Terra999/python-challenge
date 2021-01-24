@@ -1,6 +1,5 @@
-# Dear Grader - I'll be honest - most of this code was made possible because of help 
-# from the following people: Stephanie Richards - she posted her code(!), Beau Jeffrey, Melissa Lowe and as always Sharon Templin.
-# I understand things in small chunks, I just don't get how they all go together. I'll keep trying though!
+# Big shout out to Stephanie Richards, Beau Jeffrey, Melissa Lowe and as always Sharon Templin
+# I understand things in small chunks, I just don't get how they all go together, and they all me figure it out.
 
 # Import modules
 import os
@@ -38,7 +37,7 @@ unique_candidates = []
 candidate_votes = []
 vote_count = 0
 
-# Set up a function to find unique candidate name
+# Set up a function to find unique candidate names
 def unique(candidate_name):
     
     # Read through each row
@@ -78,14 +77,14 @@ win_index = candidate_votes.index(win_vote)
 winner = unique_candidates[win_index]
 # print(winner)
 
-# Find candidate vote percent - I almost figured this out by myself!
+# Find candidate vote percent
 candidate_vote_percent = []
 for x in (candidate_votes):
     vote_percent = round((float(int(x) / int(total_votes)) * 100), 3)
     candidate_vote_percent.append(vote_percent)
 # print(candidate_vote_percent)
 
-#zip lists to make tuple - Yay! I actually understand the tuple part! Needed help printing the candidate_tuple below though.
+#zip lists to make tuple
 candidate_tuple = tuple(zip(unique_candidates, candidate_vote_percent, candidate_votes))
         
 
@@ -99,3 +98,21 @@ for lst in candidate_tuple:
 print("---------------------------------")
 print(f"Winner: {winner}")
 print("---------------------------------")
+
+
+# Specify the file to write to
+output_path = os.path.join("Analysis", "PyPoll.txt")
+
+# Open the file using "write" mode. Specify the variable to hold the content.
+with open(output_path, "w") as text_file:
+
+    print(" ")
+    print("Election Results")       
+    print("---------------------------------")
+    print(f"Total Votes: {total_votes}")
+    print("---------------------------------")
+    for lst in candidate_tuple:
+        print(f"{lst[0]}: {lst[1]}00% ({lst[2]})")
+    print("---------------------------------")
+    print(f"Winner: {winner}")
+    print("---------------------------------")

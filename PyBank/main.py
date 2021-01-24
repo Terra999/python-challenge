@@ -78,17 +78,27 @@ with open(csvpath) as csvfile:
     average_monthly_change = round(total_change/(total_months - 1), 2)
     # print(average_monthly_change)
 
+print(" ")
+print("Financial Analysis")       
+print("---------------------------------")
+print(f"Total Months: {total_months}")
+print(f"Total: ${total_revenue}")
+print(f"Average Change: ${average_monthly_change}")
+print(f"Greatest Increase in Profits: {greatest_increase_month}, (${greatest_increase})")
+print(f"Greatest Decrease in Profits: {greatest_decrease_month}, (${greatest_decrease})")
 
 
+ # Specify the file to write to
+output_path = os.path.join("Analysis", "PyBank.txt")
+
+# # Open the file using "write" mode. Specify the variable to hold the content.
+with open(output_path, "w") as text_file:
+
+    print(" ")
+    print("Financial Analysis")       
+    print("---------------------------------")
     print(f"Total Months: {total_months}")
     print(f"Total: ${total_revenue}")
     print(f"Average Change: ${average_monthly_change}")
     print(f"Greatest Increase in Profits: {greatest_increase_month}, (${greatest_increase})")
     print(f"Greatest Decrease in Profits: {greatest_decrease_month}, (${greatest_decrease})")
-
-
-
-
-
-
-         
